@@ -1,0 +1,23 @@
+# ~/.tmuxinator/cseye.yml
+
+name: cseye
+root: ~/etc/code/boozt/cseye
+
+# Optional tmux socket
+# socket_name: foo
+
+# Runs before everything. Use it to start daemons etc.
+# pre: sudo /etc/rc.d/mysqld start
+
+# Runs in each window and pane before window/pane specific commands. Useful for setting up interpreter versions.
+# pre_window: rbenv shell 2.0.0-p247
+
+# Pass command line options to tmux. Useful for specifying a different tmux.conf.
+pre_window: export SYMFONY_ENV=dev
+
+# Change the command to call tmux.  This can be used by derivatives/wrappers like byobu.
+# tmux_command: byobu
+
+windows:
+  - editor: vim
+  - shell: ~/etc/code/boozt/cseye

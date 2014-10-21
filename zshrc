@@ -16,15 +16,30 @@ export ZSH_THEME="fishy"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git mercurial composer symfony2)
+plugins=(git mercurial composer symfony2 capistrano)
 
 source $ZSH/oh-my-zsh.sh
 
+#Disable autocorrect
+unsetopt correct_all
+
 # Customize to your needs...
 export PATH=~/.bin/:$PATH
+export XDG_CONFIG_HOME="$HOME/.config"
+export EDITOR=vim
 
 # Optimized version
 function git_prompt_info() {
   ref=$(git symbolic-ref HEAD 2> /dev/null) || return
   echo "$ZSH_THEME_GIT_PROMPT_PREFIX${ref#refs/heads/}$ZSH_THEME_GIT_PROMPT_SUFFIX"
 }
+
+#Aliases
+alias diff="colordiff"
+alias tmux="TERM=screen-256color-bce tmux"
+alias st="st -e tmux"
+alias mproc="mysql -u root -p -e 'SHOW PROCESSLIST;'"
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
+stty -ixon -ixoff
